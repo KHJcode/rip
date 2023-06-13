@@ -13,32 +13,35 @@ public class Environment : MonoBehaviour
     List<Action> afternoonHandlers = new List<Action>();
     List<Action> nightHandlers = new List<Action>();
 
-    private void Create()
+    private void Start()
     {
+        this.handleAtAfternoon();
         StartCoroutine(increasePlayTime());
     }
 
     IEnumerator increasePlayTime()
     {
-        this.playTime += 1;
-        if (this.playTime % this.nightTimeLimit <= this.afternoonTimeLimit)
+        while (true)
         {
-            if (this.isNight)
+            this.playTime += 1;
+            if (this.playTime % this.nightTimeLimit <= this.afternoonTimeLimit)
             {
-                this.handleAtAfternoon();
-                this.isNight = false;
+                if (this.isNight)
+                {
+                    this.handleAtAfternoon();
+                    this.isNight = false;
+                }
             }
-        }
-        else
-        {
-            if (!this.isNight)
+            else
             {
-                this.handleAtNight();
-                this.isNight = true;
+                if (!this.isNight)
+                {
+                    this.handleAtNight();
+                    this.isNight = true;
+                }
             }
+            yield return new WaitForSecondsRealtime(this.unitTime);
         }
-        yield return new WaitForSeconds(this.unitTime);
-        StartCoroutine(increasePlayTime());
     }
 
     private void handleAtNight()

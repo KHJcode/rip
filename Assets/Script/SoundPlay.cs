@@ -9,7 +9,7 @@ public class SoundPlay : MonoBehaviour
     public Environment environment;
     AudioSource audioSource;
 
-    private void Start()
+    private void Awake()
     {
         this.environment.registrationAfternoonHandler(changeMusicToAfternoonVersion);
         this.environment.registrationNightHandler(changeMusicToNightVersion);
