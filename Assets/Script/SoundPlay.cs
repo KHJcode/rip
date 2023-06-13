@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class SoundPlay : MonoBehaviour
 {
-    public AudioClip backgroundMusicClip;
+    public AudioClip afternoonMusicClip;
+    public AudioClip nightMusicClip;
+    public Environment environment;
     AudioSource audioSource;
 
-    void Start()
+    private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = backgroundMusicClip;
-        audioSource.Play();
+        this.environment.registrationAfternoonHandler(changeMusicToAfternoonVersion);
+        this.environment.registrationNightHandler(changeMusicToNightVersion);
+        this.audioSource = GetComponent<AudioSource>();
+    }
+
+    public void changeMusicToNightVersion()
+    {
+        this.audioSource.clip = this.nightMusicClip;
+        this.audioSource.Play();
+    }
+
+    public void changeMusicToAfternoonVersion()
+    {
+        this.audioSource.clip = this.afternoonMusicClip;
+        this.audioSource.Play();
     }
 }
