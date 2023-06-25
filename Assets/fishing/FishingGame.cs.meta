@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c19e9a17e1359c043ab0bba4154eca5e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - arrowText: {instanceID: 0}
+  - fishPrefab: {fileID: 1342889782683910774, guid: 4aa01f1d5c72d4e47a8c44e612a6b6fc, type: 3}
+  - squidPrefab: {fileID: 7511180232019162148, guid: 818c5a1ba0d9810439f11299463f2294, type: 3}
+  - eelPrefab: {fileID: 4807929556901506227, guid: 5b5c678f31981e34f9122b87217da1ac, type: 3}
+  - fishingRodPrefab: {fileID: 919132149155446097, guid: f3af3c356e2ae6346893512397408e38, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
