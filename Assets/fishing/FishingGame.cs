@@ -28,7 +28,7 @@ public class FishingGame : MonoBehaviour
 
     private void Start()
     {
-        arrowArray = new string[] { "<-", "->" };
+        arrowArray = new string[] { "◀", "▶" };
         originalArrowTextArray = new string[arrowCount];
     }
 
@@ -39,40 +39,26 @@ public class FishingGame : MonoBehaviour
         {
             string currentArrow = originalArrowTextArray[currentArrowIndex];
             bool isCorrect = false;
-
-            if (Input.GetKeyDown(leftKey) && currentArrow == "<-")
+            if (Input.GetKeyDown(leftKey) && currentArrow == "◀")
             {
-                //Vector3 rodPosition = new Vector3(-2f, -1f, -1f);
-                
                 fishingRod.transform.rotation = player.transform.rotation * Quaternion.Euler(0f, -20f, -90f);
                 isCorrect = true;
             }
-            else if (Input.GetKeyDown(rightKey) && currentArrow == "->")
-            {
-                //Vector3 rodPosition = new Vector3(-2f, -1f, -1f);
-                
+            else if (Input.GetKeyDown(rightKey) && currentArrow == "▶")
+            {   
                 fishingRod.transform.rotation = player.transform.rotation * Quaternion.Euler(0f, 20f, -90f);
                 isCorrect = true;
             }
-        
-
-
             if (isCorrect)
             {
                 SetArrowTextBlue(currentArrowIndex);
                 currentArrowIndex++;
                 correctArrowCount++;
-
                 if (correctArrowCount == arrowCount)
                 {
                     DisplayFish();
                     EndGame();
                 }
-                /*else
-                {
-                    DisplayFish();
-                }*/
-
             }
             else
             {
@@ -107,7 +93,7 @@ public class FishingGame : MonoBehaviour
     private void SetArrowTextBlue(int index)
     {
         string[] arrowTextArray = arrowText.text.Split(' ');
-        arrowTextArray[index] = "<color=blue>" + arrowTextArray[index] + "</color>";
+        arrowTextArray[index] = "<color=orange>" + arrowTextArray[index] + "</color>";
         arrowText.text = string.Join(" ", arrowTextArray);
     }
 
